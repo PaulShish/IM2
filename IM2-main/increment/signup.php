@@ -78,7 +78,7 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="" method="post">
+            <form action="signup.php" method="post">
                 <h1 style="padding-top: 15px; color: #5E18EA"> Create Account</h1>
                 <input type="text" name="fname" placeholder="First Name" value="">
                 <input type="text" name="lname" placeholder="Last Name" value="">
@@ -118,7 +118,7 @@
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="" method="post">
+            <form action="frontpage2.php" method="post">
                 <h1 style="padding-bottom: 15px; color: #5E18EA"> Login Now</h1>
                 <input type="email" name="login-email" placeholder="Email">
                 <input type="password" name="login-password" placeholder="Password">
