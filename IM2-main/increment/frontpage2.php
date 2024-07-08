@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("Location: signup.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +19,12 @@
         <div class="container">
             <nav class="navigation">
                 <ul>
-                    
-                    <li style="margin-top: -2%;margin-left: -5%; margin-right: 5%"><div id="increment">
-                        <h1 style=" font-size: 200%"class="incre">incre</h1>
-                        <h1 style=" font-size: 200%"class="ment">ment</h1>
-                      </div></li>
+                    <li style="margin-top: -2%;margin-left: -5%; margin-right: 5%">
+                        <div id="increment">
+                            <h1 style="font-size: 200%" class="incre">incre</h1>
+                            <h1 style="font-size: 200%" class="ment">ment</h1>
+                        </div>
+                    </li>
                     <li><a href="#">Who we are</a></li>
                     <li><a href="#">Pricing</a></li>
                     <li><a href="#">Services</a></li>
@@ -24,20 +33,17 @@
                     <li><a href="#">Submit a Ticket</a></li>
                     <li class="oblong-link"><a href="#">Book A Meeting</a></li>
                     <li style="margin-right: -5%" class="oblong-link-pricing"><a href="account.php">ACCOUNT</a></li>
-
                 </ul>
             </nav>
         </div>
     </header>
     <main class="main">
-        
         <section class="hero">
             <div class="container">
                 <h1 style="padding: 0px 490px; font-size:320%; margin-left: -46%;">Looking for Ways to Reduce IT Expenses?</h1>
-            
                 <div class="content-with-video">
-                    <p style="text-align: justify;margin-top:0%; padding: 0px 533px; margin-left: -50%;font-size: 90%;font-family: sans-serif; color:rgb(61, 61, 61)">Discover our affordable Managed IT Solutions to streamline your expenses and optimize performance. You can save up to 80% of the cost by subscribing to our shared and highly skilled IT Personnel to manage your whole IT Department. We offer Technology Consultations, Technical Supports, IT Managers and IT Executives.</p>
-                </div>
+                    <p style="text-align: justify;margin-top:0%; padding: 0px 533px; margin-left: -50%;font-size: 90%;font-family: sans-serif; color:rgb(61, 61, 61)">Discover our affordable Managed IT Solutions to streamline your expenses and optimize performance. You can save up to 80% of the cost by subscribing to our shared and highly skilled IT Personnel to manage your whole IT Department. We offer Tec...</p>
+                    </div>
                 <p style="margin-top: -1%; padding: 0px 500px; margin-left: -47%;font-size: 90%;font-family: sans-serif; color:rgb(61, 61, 61)">We are proud of our experience in IT Management and Software Development.</p>
                 <nav class="navigation">
                 <ul>

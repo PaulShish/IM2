@@ -129,14 +129,20 @@ body{
   }
 
   .border{
-    color: green;
+    color: #750CFF;
     border: 2px solid; 
     border-radius: 10px;
     border-color: #E7DFF8;
     background-color:#E7DFF8;
-    padding-left: 1px;
-    margin-left: 550px;
+    padding-right: 650px;
+    margin-left: 410px;
     margin-top: 30px;
     margin-bottom: 80px;
   }
+  .custom-line {
+    margin-left: 50px;
+    width: 210%;
+    border: 1px solid #000; /* solid black line */
+}
+
   

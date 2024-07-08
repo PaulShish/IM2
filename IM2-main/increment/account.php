@@ -1,19 +1,11 @@
 <?php
-session_start(); // Start session
-
-$host = "localhost";
-$user = "root";
-$password = "";
-$con_db = "increment_db";
-
-include "connect.php"; // Assuming this file contains necessary database connection code
-
-$data = mysqli_connect($host, $user, $password, $con_db);
-
-// Check connection
-if (!$data) {
-    die("Connection failed: " . mysqli_connect_error());
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("Location: signup.php");
+    exit();
 }
+
+$user = $_SESSION['user'];
 ?>
 
 
@@ -44,7 +36,7 @@ if (!$data) {
                         <img src="img/dashboard.png" alt="dashboard">
                     </div>
                     <div class="text">
-                        <p><a href="#">Dashboard</a></p>
+                        <p><a href="dashboard.php">Dashboard</a></p>
                     </div>
                 </div>
             </div>
@@ -111,7 +103,7 @@ if (!$data) {
                     <img src="img/logout.png" alt="logout">
                 </div>
                 <div class="text">
-                  <p><a href="signup.php" >Logout</a></p>
+                  <p><a href="logout.php">Logout</a></p>
                 </div>
 
             </div>
@@ -119,61 +111,16 @@ if (!$data) {
     </div>
 
     <div id="right" class="splitright">
-        <div class="c2"></div>
         <div class="border">
-            <div class="line"></div>
-            <?php
-            // Check if user is logged in
-            if (isset($_SESSION['id'])) {
-                // Retrieve logged-in user's ID from session
-                $id = $_SESSION['id'];
-
-                // Query data for the logged-in user using prepared statement
-                $sql = "SELECT * FROM registration WHERE id = ?";
-                
-                // Prepare the SQL statement
-                $stmt = mysqli_prepare($data, $sql);
-                
-                if ($stmt) {
-                    // Bind parameters
-                    mysqli_stmt_bind_param($stmt, "s", $id);
-                    
-                    // Execute query
-                    mysqli_stmt_execute($stmt);
-                    
-                    // Get result set
-                    $result = mysqli_stmt_get_result($stmt);
-
-                    // Check if query was successful
-                    if ($result && mysqli_num_rows($result) > 0) {
-                        // Fetch associative array of the user's data
-                        $user_data = mysqli_fetch_assoc($result);
-                        // Use $user_data to access the user's information
-                        $fname = $user_data['registration_fname'];
-                        $lname = $user_data['registration_lname'];
-                        $phone = $user_data['registration_phone'];
-
-                        // Display user details
-                        echo "<p>First Name: {$fname}</p>";
-                        echo "<p>Last Name: {$lname}</p>";
-                        echo "<p>ID: {$id}</p>";
-                        echo "<p>Phone: {$phone}</p>";
-                    } else {
-                        echo "User data not found";
-                    }
-
-                    // Close result set
-                    mysqli_stmt_close($stmt);
-                } else {
-                    echo "Error in prepared statement: " . mysqli_error($data);
-                }
-            } else {
-                echo "User is not logged in"; // Handle case where user is not logged in
-            }
-
-            // Close database connection
-            mysqli_close($data);
-            ?>
+        <h1 style="margin-left: 150px; margin-top: 50px">Welcome, <?php echo $user['fname'] . ' ' . $user['lname']; ?></h1>
+        <hr class="custom-line">
+            <h3 style="color: #9D73F1ed; margin-left: 100px; margin-top: 50px">First name: <?php echo $user['fname']; ?></h3>
+            <h3 style="color: #9D73F1ed; margin-left: 100px; margin-top: 20px">Last name: <?php echo $user['lname']; ?></h3>
+            <h3 style="color: #9D73F1ed; margin-left: 100px; margin-top: 20px">Email: <?php echo $user['email']; ?></h3>
+            <h3 style="color: #9D73F1ed; margin-left: 100px; margin-top: 20px">Contact number: <?php echo $user['phone']; ?></h3>
+            <h1 style="margin-left: 150px; margin-top: 50px">Team Agile</h1>
+            <h3 style="color: #9D73F1ed; margin-left: 100px; margin-top: 20px">Supervisor: </h3>
+            <h3 style="color: #9D73F1ed; margin-left: 100px; margin-top: 20px">Members: </h3>
         </div>
     </div>
 
