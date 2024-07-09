@@ -98,7 +98,6 @@ $conn->close();
             <h1 style="padding-bottom: 15px; color: #5E18EA">Login Now</h1>
             <input type="email" name="login-email" placeholder="Email">
             <input type="password" name="login-password" placeholder="Password">
-            <a href="#" style="padding-left:150px; font-weight: bold">Forgot Your Password?</a>
             <button type="submit" name="login-submit" style="margin-top: 10px">Sign In</button>
             <h5>New here? <a class="ghost" id="signUp" style="color:#5E18EA;"><u>Sign Up</u></a></h5>
         </form>
