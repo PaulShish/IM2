@@ -2,7 +2,6 @@
 include "connect.php";
 session_start();
 
-// Function to sanitize input data
 function sanitizeInput($input) {
     $input = trim($input);
     $input = stripslashes($input);
@@ -10,7 +9,6 @@ function sanitizeInput($input) {
     return $input;
 }
 
-// Function to verify login credentials
 function verifyLogin($conn, $login_email, $login_password) {
     $login_email = sanitizeInput($login_email);
 
@@ -28,7 +26,6 @@ function verifyLogin($conn, $login_email, $login_password) {
     }
 }
 
-// Handle registration form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $fname = sanitizeInput($_POST['fname']);
     $lname = sanitizeInput($_POST['lname']);
@@ -50,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $stmt->close();
 }
 
-// Handle login form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login-submit'])) {
     $login_email = filter_var($_POST['login-email'], FILTER_SANITIZE_EMAIL);
     $login_password = sanitizeInput($_POST['login-password']);
@@ -58,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login-submit'])) {
     if (!empty($login_email) && !empty($login_password)) {
         $user = verifyLogin($conn, $login_email, $login_password);
         if ($user) {
-            $_SESSION['user'] = $user; // Store user details in session
-            header("Location: frontpage2.php"); // Redirect to frontpage2.php after successful login
+            $_SESSION['user'] = $user; 
+            header("Location: frontpage2.php");
             exit();
         } else {
             echo "<script>alert('Login failed. Please check your credentials.');</script>";
